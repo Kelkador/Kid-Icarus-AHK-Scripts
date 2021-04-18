@@ -6,7 +6,7 @@ Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprisi
 2. Citra (https://citra-emu.org/) (if playing on emu)
 3. Input Redirection Client QT (https://github.com/gbrown5/InputRedirectionClient-Qt) (if playing on original hardware)
 4. Steam (https://store.steampowered.com/) (for dual analogue controls)
-5. Universal Controller Remapper AHK Version by evilC (https://github.com/evilC/UCR)(for mouse and keyboard controls)
+5. Universal Controller Remapper AHK Version by evilC (https://github.com/evilC/UCR) (for mouse and keyboard controls)
 6. vJoy (http://vjoystick.sourceforge.net/site/index.php/download-a-install/download) (for mouse and keyboard controls)
 
 #
