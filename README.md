@@ -104,4 +104,4 @@ Circle Pad > Touch Screen Aiming > The bindings below
 
 ## I have a question!!!!
 
-DM or @ me on tweeter @Kelkador
+DM or @ me on tweeter https://twitter.com/Kelkador
