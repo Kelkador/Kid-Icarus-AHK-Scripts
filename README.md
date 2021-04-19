@@ -101,3 +101,7 @@ Vertical and horizontal sensitivity max
 Circle Pad > Touch Screen Aiming > The bindings below
 
 ![ScreenShot](https://i.imgur.com/NWGpPo6.png)
+
+## I have a question!!!!
+
+DM or @ me on tweeter @Kelkador
