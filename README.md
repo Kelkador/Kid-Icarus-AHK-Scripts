@@ -11,9 +11,11 @@ Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprisi
 
 ## What are the Script's Default Controls?
 F1: Start the script, only start the script when the window is focused and the cursor is in the middle of the touch screen.
+
 6: Restart the script, you will have to press F1 again
 
 2: Use vehicle (Cherubot, Aether Ring) ability. (Citra Script Only)
+
 Esc: Stop script.
 
 ## Okay Nerd, I Want to Play on my 3DS
