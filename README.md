@@ -26,6 +26,7 @@ Esc: Stop script.
 ![ScreenShot](https://i.imgur.com/7gUwrFB.png)
 3. Plug the IP address into InputRedirection Client (!!This will only work if the 3DS and computer are connected to the same network!!)
 4. Set controls as you wish, below are the controls I've found work best with my script and UCR settings.
+
 ![ScreenShot](https://i.imgur.com/MlT0VxV.png)
 ![ScreenShot](https://i.imgur.com/fpgzdnt.png)
 5. To get vehicle controls with this method, right click the lower left corner of the "touch screen" window and select "Set Point to Button" and follow the instructions in the window that pops up.
