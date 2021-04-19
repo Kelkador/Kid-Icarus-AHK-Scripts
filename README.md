@@ -28,6 +28,7 @@ Esc: Stop script.
 4. Set controls as you wish, below are the controls I've found work best with my script and UCR settings.
 
 ![ScreenShot](https://i.imgur.com/MlT0VxV.png)
+
 ![ScreenShot](https://i.imgur.com/fpgzdnt.png)
 
 5. To get vehicle controls with this method, right click the lower left corner of the "touch screen" window and select "Set Point to Button" and follow the instructions in the window that pops up.
