@@ -29,6 +29,7 @@ Esc: Stop script.
 
 ![ScreenShot](https://i.imgur.com/MlT0VxV.png)
 ![ScreenShot](https://i.imgur.com/fpgzdnt.png)
+
 5. To get vehicle controls with this method, right click the lower left corner of the "touch screen" window and select "Set Point to Button" and follow the instructions in the window that pops up.
 6. Start "KI OG Hardware.ahk" focus the touch screen (click it), center the cursor and hit F1!
 
