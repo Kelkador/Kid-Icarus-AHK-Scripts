@@ -35,14 +35,18 @@ Esc: Stop script.
 6. Start "KI OG Hardware.ahk" focus the touch screen (click it), center the cursor and hit F1!
 
 ## Nah, Actually Citra is my Jam
-1. Download Citra and dump your copy of Kid Icarus Uprising. (Google how to dump your copy, it will not be covered in this guide)
+1. Dump your copy of Kid Icarus Uprising. (Google how to dump your 3DS games, it will not be covered in this guide)
 2. Dump your 3DS system files for Citra. (https://github.com/citra-emu/citra/wiki/User-Directory)
 3. Set your controls. (Emulation > Configure > Controls)
 4. Change the display type (View > Screen Layout > Large Screen) and full screen (F11).
 ![ScreenShot](https://i.imgur.com/RJXsoiD.png)
 5. Start "KI Citra.ahk" focus the Citra window (click it), center the cursor and hit F1!
 
-NOTE: This setup is assuming you followed these steps AND have a 1920x1080 monitor. If you have ANYTHING else this WILL NOT WORK. To get it to work, or to get a different layout to work, edit the "boundary" variables with numbers you can get from "Windows Spy" (Installed with AHK) To do this, launch windows spy, focus the Citra window in full screen and use the guide below to find the define the boundaries of the touch screen as it appears on the screen by hovering the left, right, top and bottom boundaries on the touch screen.
+NOTE: This setup is assuming you followed these steps AND have a 1920x1080 monitor. If you have ANYTHING else this WILL NOT WORK. To get it to work, or to get a different layout to work, edit the "boundary" variables with numbers you can get from "Windows Spy" (Installed with AHK) To do this, launch windows spy, focus the Citra window in full screen and use the guide below to find the define the boundaries of the touch screen as it appears on the screen by hovering the left, right, top and bottom boundaries of the touch screen.
+
 ![ScreenShot](https://i.imgur.com/CHaBj4D.png)
 
-I need to control 
+![ScreenShot](https://i.imgur.com/JzaQgKt.png)
+
+## I want to use Mouse and Keyboard!!
+1.
