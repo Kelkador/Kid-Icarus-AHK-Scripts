@@ -94,6 +94,8 @@ NOTE: This setup is assuming you followed these steps AND have a 1920x1080 monit
 
 ![ScreenShot](https://i.imgur.com/JzaQgKt.png)
 
+FINAL NOTE:  If you're having issues binding the analogue sticks in Citra, click "automap" (below the ZR binding) and push a different key/button. The analogue sticks should be binded correctly!
+
 ## What Should My In-Game Bindings Be?
 
 Vertical and horizontal sensitivity max
