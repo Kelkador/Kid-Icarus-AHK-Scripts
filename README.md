@@ -25,6 +25,7 @@ Esc: Stop script
 
 ![ScreenShot](https://i.imgur.com/PUVcw3q.png)
 
+3. Download UCR.ini from GitHub page
 4. Close UCR and drag UCR.ini into UCR's root folder (overwrite if it prompts you to do so)
 5. Launch UCR again and choose the profile on the right side for the playing method you're using (Input Redirect or Citra)
 
