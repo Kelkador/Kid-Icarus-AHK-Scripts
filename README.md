@@ -25,15 +25,15 @@ Esc: Stop script
 
 ![ScreenShot](https://i.imgur.com/PUVcw3q.png)
 
-4. Close UCR and drag UCR.ini into UCR's root folder (overwrite if it prompts you to do so)
-5. Launch UCR again and choose the profile on the right side for the playing method you're using (Input Redirect or Citra)
+3. Close UCR and drag UCR.ini into UCR's root folder (overwrite if it prompts you to do so)
+4. Launch UCR again and choose the profile on the right side for the playing method you're using (Input Redirect or Citra)
 
 ![ScreenShot](https://i.imgur.com/gymYqvR.png)
 
 NOTE: By default left control is a "run button", if you wish to assign a different run button, you will need to assign every other rebinding to have a version with that "run button" for smooth gameplay.
 
-6. (Optional) Rebind keys to your liking
-7. Move onto what you want to play on
+5. (Optional) Rebind keys to your liking
+6. Move onto what you want to play on
 
 NOTE: By default the binded keys (Except L and R) will have their keyboard inputs BLOCKED. Meaning pressing W will ONLY send "Left Stick Up" if you would like to change this, click the binded key and uncheck "blocked"
 
