@@ -1,5 +1,5 @@
 ## What is This Project?
-Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprising to be playing with mouse and keyboard or dual analogue, with very little problems. There is some software that you'll need to get this working fully, but once you download everything it'll be fairly plug and play.
+Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprising to be playing with mouse and keyboard or dual analogue, with very little problems. There is some software that you'll need to get this working fully, but once you download everything it'll be fairly plug and play. Please download the scripts from the "releases" page.
 
 ## What Software is Needed?
 1. AutoHotKey's current release (NOT 2.0) (https://www.autohotkey.com/) (needed no matter what)
