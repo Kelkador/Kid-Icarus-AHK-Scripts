@@ -1,108 +1,74 @@
 ## What is This Project?
-Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprising to be playing with mouse and keyboard or dual analogue, with very little problems. There is some software that you'll need to get this working fully, but once you download everything it'll be fairly plug and play. Please download the scripts from the "releases" page.
+Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprising to be playing with mouse and keyboard or dual analogue, with very little problems. There is some software that you'll need to get this working fully, but once you download everything it'll be fairly plug and play. Please download the scripts from the "releases" page. Note: My video you are probably linked to from this is ENTIRELY OUTDATED!!! This is a complete, updated guide below
 
 ## What Software is Needed?
-1. AutoHotKey's current release (NOT 2.0) (https://www.autohotkey.com/) (needed no matter what)
-2. A hacked 3DS (https://3ds.hacks.guide/) (needed no matter what)
-3. Citra (https://citra-emu.org/) (if playing on emu)
-4. InputRedirection Client QT (https://github.com/gbrown5/InputRedirectionClient-Qt) (if playing on original hardware)
-5. Universal Controller Remapper AHK Version by evilC (https://github.com/evilC/UCR) (for mouse and keyboard controls)
-6. vJoy (http://vjoystick.sourceforge.net/site/index.php/download-a-install/download) (for mouse and keyboard controls)
-7. Steam (https://store.steampowered.com/) (for dual analogue)
+1. AutoHotKey 1.1 (https://www.autohotkey.com/) (Always needed)
+2. Citra (https://citra-emu.org/) (Always needed)
+3. Steam (https://store.steampowered.com/) (Controller)
+4. ViGEmBus Driver (https://github.com/nefarius/ViGEmBus/releases/tag/v1.21.442.0) (Mouse/Keyboard)
 
 ## What are the Script's Default Controls?
-F1: Start the script, only start the script when the window is focused and the cursor is in the middle of the touch screen.
+You decide! The only defaults are WASD = Movement for Mouse/Keyboard. Change that if you're technically inclined and also insane.
 
-6: Restart the script, you will have to press F1 in the middle of the Touch Screen again
+To figure out the exact names of the non-letter/number keys you must put in: https://www.autohotkey.com/docs/v1/KeyList.htm
 
-2: Use vehicle (Cherubot, Aether Ring) ability (Citra Script Only)
+## How does the .bat work?
+Choose your control method and follow the instructions.
 
-Esc: Stop script
+Keyname = If you want to assign Space or F6 to an action, write out "Space" or "F6" (Keys like F, L, 4, etc do not need a special name. Consult the KeyList above if stumped)
+Sprint = Sprint key. Without pressing you will walk most of the time. (Keyboard only)
+Vehicle abilities = Exotank
+Start script = What will activate the script (lol)
+Pause script = What will pause script operation, will restart if the above key is pressed.
+End script = Closes the script completely, will have to be reopened.
 
 ## I want to control with Mouse and Keyboard!!
-1. Download Universal Controller Remapper (UCR) and vJoy.
-2. Launch UCR and go to IOClasses > VJoy > Install SCPVBus
+1. Create your own MouseKeyboard.ahk file and run!
+2. In Citra's controls settings (Emulation > Configure > Controls): Click "Set Analog Stick" under "Circle Pad", click "OK" then press D and W IN THAT ORDER.
 
-![ScreenShot](https://i.imgur.com/PUVcw3q.png)
+![ScreenShot](https://i.imgur.com/icIhxC7.png)
 
-3. Close UCR and drag UCR.ini into UCR's root folder (overwrite if it prompts you to do so)
-4. Launch UCR again and choose the profile on the right side for the playing method you're using (Input Redirect or Citra)
+3. Set the rest of your controls as you wish.
+4. Make SURE layout is set to "Seperate Windows" under Emulation > Configure > Graphics
 
-![ScreenShot](https://i.imgur.com/gymYqvR.png)
+![ScreenShot](https://i.imgur.com/jCIUPZm.png)
 
-NOTE: By default left control is a "run button", if you wish to assign a different run button, you will need to assign every other rebinding to have a version with that "run button" for smooth gameplay.
+5. Once you start the game to test that everything's working, press your start script button hovering over the focused touch screen to check, your mouse should be stuck in a state of clicking and your cursor should be trapped within the touch screen window.
 
-5. (Optional) Rebind keys to your liking
-6. Move onto what you want to play on
-
-NOTE: By default the binded keys (Except L and R) will have their keyboard inputs BLOCKED. Meaning pressing W will ONLY send "Left Stick Up" if you would like to change this, click the binded key and uncheck "blocked"
-
-![ScreenShot](https://i.imgur.com/EZe5WjK.png)
-
-FINAL NOTE: If you let go of your "run button" before you let go of your button to perform an action, the action will be HELD until you hit it with the run button again. For an example on default controls, if you let go of left ctrl while holding Q, UCR will hold DPAD left until left ctrl and Q are hit again!
+You should be good to start facing the Underworld!!
 
 ## I want to control with Dual Analogue!
-1. Install and open Steam.
-2. Go to View > Settings > Controller > Desktop Configuration
+1. Create your own Controller.ahk file and run!
+2. Open Steam.
+3. Edit "Desktop Layout" under Steam > Settings > Controller
+4. Make sure the Right Joystick is set to "Joystick Mouse"
+5. Set controls as you like and keep both Steam and the script active as you open Citra!
+6. Make SURE layout is set to "Seperate Windows" under Emulation > Configure > Graphics
 
-![ScreenShot](https://i.imgur.com/lKbXBck.png)
+![ScreenShot](https://i.imgur.com/jCIUPZm.png)
 
-![ScreenShot](https://i.imgur.com/Y8p7wNA.png)
+7. Click the "Auto Map" function in Emulation > Configure > Controls and follow the instructions!
+8. Once you start the game to test that everything's working, press your start script button hovering over the focused touch screen to check, your mouse should be stuck in a state of clicking and your cursor should be trapped within the touch screen window.
 
-3. Go to Browse Configs > Templates > Gamepad
+... Yeah honestly from here the skies the limit due to Steam Input being excellent. If you want you can even do some mode switching that toggles the script between menu and gameplay. If you want my template I use to play with controller...
 
-![ScreenShot](https://i.imgur.com/qd9wbxb.png)
+1. Click here in the Steam Controller menu!
 
-4. Rebind the right stick to "Joystick Mouse Move" and change the sensitivity to your liking
-5. Move onto what you want to play on.
+![ScreenShot](https://i.imgur.com/XArifVc.png)
 
-## I Want to Play on My 3DS
-1. Install the Rosalina menu on your 3DS. Hacking the 3DS is not going to be covered in this guide, check this one out instead. (https://3ds.hacks.guide/)
-2. Once your 3DS is all hacked, press L + DPad Down + Select and navigate the Rosalina Menu > Miscellaneous options > Start InputRedirection, take note of the IP Address in the upper right.
-![ScreenShot](https://i.imgur.com/gaoecOh.png)
-![ScreenShot](https://i.imgur.com/OGdBkNG.png)
-![ScreenShot](https://i.imgur.com/7gUwrFB.png)
-3. Plug the IP address into InputRedirection Client (!!This will only work if the 3DS and computer are connected to the same network!!)
-4. Set controls as you wish, below are the controls I've found work best with my script and UCR settings.
+2. In search, search for "Kelkador" and download the template.
 
-![ScreenShot](https://i.imgur.com/MlT0VxV.png)
+![ScreenShot](https://i.imgur.com/ePI7gjq.png)
 
-![ScreenShot](https://i.imgur.com/fpgzdnt.png)
+3. In "Layouts" Make sure "Show All Layouts" is active, and it should be at the bottom!
 
-5. To get vehicle controls with this method, right click the lower left corner of the "touch screen" window and select "Set Point to Button" and follow the instructions in the window that pops up.
-6. Start "KI OG Hardware.ahk" focus the touch screen (click it), center the cursor and hit F1!
+In my layout, there's gyro aiming and I use "8" to start the script, "9" to pause it, with "0" as my vehicle button. (So put those as your entries in Generator.bat!) Bumpers in "Game Mode" tighten your aim, and did I mention my layout has Gyro? Steam Input is AMAZING. Toy around with it.
 
-## I Want to Play on Citra
-1. Dump your copy of Kid Icarus Uprising. (Google how to dump your 3DS games, it will not be covered in this guide)
-2. Dump your 3DS system files for Citra. (https://github.com/citra-emu/citra/wiki/User-Directory)
-3. Set your controls. (Emulation > Configure > Controls) (Below are my recommended controls for Citra)
+## Special thanks
 
-![ScreenShot](https://i.imgur.com/eF0RnDn.png)
-
-![ScreenShot](https://i.imgur.com/eJ0CKK6.png)
-
-
-4. Change the display type (View > Screen Layout > Large Screen) and full screen (F11).
-
-![ScreenShot](https://i.imgur.com/RJXsoiD.png)
-
-5. Start "KI Citra.ahk" focus the Citra window (click it), center the cursor on the touch screen and hit F1!
-
-NOTE: This setup is assuming you followed these steps AND have a 1920x1080 monitor. If you have ANYTHING else this WILL NOT WORK. To get it to work, or to get a different layout to work, edit the "boundary" variables with numbers you can get from "Windows Spy" (Installed with AHK) To do this, launch windows spy, hover over the edges of the touch screen and use the guide below to find the define the boundaries as they appear on the screen by hovering over the left, right, top and bottom boundaries of the touch screen and reading the numbers windows spy provides.
-
-![ScreenShot](https://i.imgur.com/INRYhRE.png)
-
-![ScreenShot](https://i.imgur.com/JzaQgKt.png)
-
-FINAL NOTE:  If you're having issues binding the analogue sticks in Citra, click "automap" (below the ZR binding) and push a different key/button. The analogue sticks should be binded correctly!
-
-## What Should My In-Game Bindings Be?
-
-Vertical and horizontal sensitivity max
-
-Circle Pad > Touch Screen Aiming > The bindings below
-
-![ScreenShot](https://i.imgur.com/NWGpPo6.png)
+evilC, for maiking the ViGEm AHK Wrapper
+nefarius, for ViGEm itself
+Sakurai, for being a real one
 
 ## I have a question!!!!
 
