@@ -72,7 +72,7 @@ In my layout, there's gyro aiming and I use "8" to start the script, "9" to paus
 
 ## Special thanks
 
-evilC, for maiking the ViGEm AHK Wrapper
+evilC, for making the ViGEm AHK Wrapper
 
 nefarius, for ViGEm itself
 
