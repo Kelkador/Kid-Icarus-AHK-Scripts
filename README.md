@@ -20,7 +20,7 @@ Keyname = If you want to assign Space or F6 to an action, write out "Space" or "
 
 Sprint = Sprint key. Without pressing you will walk most of the time. (Keyboard only)
 
-Vehicle abilities = Exotank
+Vehicle abilities = Exotank, etc.
 
 Start script = What will activate the script (lol)
 
