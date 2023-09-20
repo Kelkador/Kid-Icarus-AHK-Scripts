@@ -15,11 +15,17 @@ To figure out the exact names of the non-letter/number keys you must put in: htt
 ## How does the .bat work?
 Choose your control method and follow the instructions.
 
+
 Keyname = If you want to assign Space or F6 to an action, write out "Space" or "F6" (Keys like F, L, 4, etc do not need a special name. Consult the KeyList above if stumped)
+
 Sprint = Sprint key. Without pressing you will walk most of the time. (Keyboard only)
-Vehicle abilities = Exotank
+
+Vehicle abilities = Exotank, etc.
+
 Start script = What will activate the script (lol)
+
 Pause script = What will pause script operation, will restart if the above key is pressed.
+
 End script = Closes the script completely, will have to be reopened.
 
 ## I want to control with Mouse and Keyboard!!
@@ -66,8 +72,10 @@ In my layout, there's gyro aiming and I use "8" to start the script, "9" to paus
 
 ## Special thanks
 
-evilC, for maiking the ViGEm AHK Wrapper
+evilC, for making the ViGEm AHK Wrapper
+
 nefarius, for ViGEm itself
+
 Sakurai, for being a real one
 
 ## I have a question!!!!
