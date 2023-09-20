@@ -48,6 +48,7 @@ You should be good to start facing the Underworld!!
 ![ScreenShot](https://i.imgur.com/jCIUPZm.png)
 
 7. Click the "Auto Map" function in Emulation > Configure > Controls and follow the instructions!
+8. Once you start the game to test that everything's working, press your start script button hovering over the focused touch screen to check, your mouse should be stuck in a state of clicking and your cursor should be trapped within the touch screen window.
 
 ... Yeah honestly from here the skies the limit due to Steam Input being excellent. If you want you can even do some mode switching that toggles the script between menu and gameplay. If you want my template I use to play with controller...
 
