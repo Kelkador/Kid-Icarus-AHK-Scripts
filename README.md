@@ -1,4 +1,4 @@
-## What is This Project?
+0## What is This Project?
 Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprising to be playing with mouse and keyboard or dual analogue, with very little problems. There is some software that you'll need to get this working fully, but once you download everything it'll be fairly plug and play. Please download the scripts from the "releases" page. Note: My video you are probably linked to from this is ENTIRELY OUTDATED!!! This is a complete, updated guide below
 
 ## What Software is Needed?
@@ -87,7 +87,7 @@ Sakurai, for being a real one
 
 ## I have a question/FAQ!!!!
 
-First: If it's movement lag on the mouse and keyboard option: Go to Windows Control Panel and search for and open "Set up USB game controllers". Having this open in the background fixes this problem for me and I DO NOT know why!!
+First: If it's movement lag on the mouse and keyboard option: Go to Windows Control Panel and search for and open "Set up USB game controllers". Having this open in the background fixes this (rare) problem for me and I DO NOT know why!!
 
 ![ScreenShot](https://i.imgur.com/aMSCswW.png)
 
