@@ -93,4 +93,6 @@ First: If it's movement lag on the mouse and keyboard option: Go to Windows Cont
 
 Secondly, if Citra is acting strangely, check the default Citra System hotkeys. Ctrl + W is bound to an action by default, make sure you unbind that!
 
+Lastly, if a part of the script you believe is inaccurate, make sure there is as little "dead" black space in the Citra touch screen window as you can get!
+
 For anything else, DM or @ me on tweeter https://twitter.com/Kelkador
