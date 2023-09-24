@@ -85,6 +85,12 @@ nefarius, for ViGEm itself
 
 Sakurai, for being a real one
 
-## I have a question!!!!
+## I have a question/FAQ!!!!
 
-DM or @ me on tweeter https://twitter.com/Kelkador
+First: If it's movement lag on the mouse and keyboard option: Go to Windows Control Panel and search for and open "Set up USB game controllers". Having this open in the background fixes this problem for me and I DO NOT know why!!
+
+![ScreenShot](https://i.imgur.com/aMSCswW.png)
+
+Secondly, if Citra is acting strangely, check the default Citra System hotkeys. Ctrl + W is bound to an action by default, make sure you unbind that!
+
+For anything else, DM or @ me on tweeter https://twitter.com/Kelkador
