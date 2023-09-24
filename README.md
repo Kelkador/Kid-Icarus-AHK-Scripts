@@ -37,11 +37,11 @@ End script = Closes the script completely, will have to be reopened.
 
 ## I want to control with Mouse and Keyboard!!
 1. Create your own MouseKeyboard.ahk file and run!
-2. In Citra's controls settings (Emulation > Configure > Controls): Click "Set Analog Stick" under "Circle Pad", click "OK" then press D and W IN THAT ORDER.
+2. In Citra's controls settings (Emulation > Configure > Controls): Click "Auto Map" click "OK" then click click outside the Window once to map everything to a virtual controller!
 
-![ScreenShot](https://i.imgur.com/icIhxC7.png)
+![ScreenShot](https://i.imgur.com/HjBv41Z.png)
 
-3. Set the rest of your controls as you wish.
+3. Remap most the controls as you wish to the keyboard. However, DO NOT REMAP THE L BUTTON OR CIRCLE PAD. Leave those as-is and make sure L is set to fire in-game.
 4. Make SURE layout is set to "Seperate Windows" under Emulation > Configure > Graphics
 
 ![ScreenShot](https://i.imgur.com/jCIUPZm.png)
