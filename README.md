@@ -7,6 +7,13 @@ Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprisi
 3. Steam (https://store.steampowered.com/) (Controller)
 4. ViGEmBus Driver (https://github.com/nefarius/ViGEmBus/releases/tag/v1.21.442.0) (Mouse/Keyboard)
 
+
+NOTE: Before unzipping the release, "unblock" it in windows or the Mouse/Keyboard Functions WON'T LOAD.
+
+![ScreenShot](https://i.imgur.com/hL90WgX.png)
+
+![ScreenShot](https://i.imgur.com/e2YruCf.png)
+
 ## What are the Script's Default Controls?
 You decide! The only defaults are WASD = Movement for Mouse/Keyboard. Change that if you're technically inclined and also insane.
 
