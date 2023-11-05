@@ -4,8 +4,9 @@ Simply put, I made some AHK scripts that allow the 3DS classic Kid Icarus Uprisi
 ## What Software is Needed?
 1. AutoHotKey 1.1 (https://www.autohotkey.com/) (Always needed)
 2. Citra (https://citra-emu.org/) (Always needed)
-3. Steam (https://store.steampowered.com/) (Controller)
-4. ViGEmBus Driver (https://github.com/nefarius/ViGEmBus/releases/tag/v1.21.442.0) (Mouse/Keyboard)
+3. .Net Framework Runtime (https://dotnet.microsoft.com/en-us/download/dotnet-framework/net481) (Always Needed)
+4. Steam (https://store.steampowered.com/) (Controller)
+5. ViGEmBus Driver (https://github.com/nefarius/ViGEmBus/releases/tag/v1.21.442.0) (Mouse/Keyboard)
 
 
 NOTE: Before unzipping the release, "unblock" it in windows or the Mouse/Keyboard Functions WON'T LOAD.
@@ -36,7 +37,7 @@ Pause script = What will pause script operation, will restart if the above key i
 End script = Closes the script completely, will have to be reopened.
 
 ## I want to control with Mouse and Keyboard!!
-1. Create your own MouseKeyboard.ahk file and run!
+1. Generate your own MouseKeyboard.ahk with Generate.bat and run!
 2. In Citra's controls settings (Emulation > Configure > Controls): Click "Auto Map" click "OK" then click click outside the Window once to map everything to a virtual controller!
 
 ![ScreenShot](https://i.imgur.com/HjBv41Z.png)
@@ -51,7 +52,7 @@ End script = Closes the script completely, will have to be reopened.
 You should be good to start facing the Underworld!!
 
 ## I want to control with Dual Analogue!
-1. Create your own Controller.ahk file and run!
+1. Generate your own Controller.ahk with Generate.bat and run!
 2. Open Steam.
 3. Edit "Desktop Layout" under Steam > Settings > Controller
 4. Make sure the Right Joystick is set to "Joystick Mouse"
@@ -87,11 +88,7 @@ Sakurai, for being a real one
 
 ## I have a question/FAQ!!!!
 
-First: If it's movement lag on the mouse and keyboard option: Go to Windows Control Panel and search for and open "Set up USB game controllers". Having this open in the background fixes this (rare) problem for me and I DO NOT know why!!
-
-![ScreenShot](https://i.imgur.com/aMSCswW.png)
-
-Secondly, if Citra is acting strangely, check the default Citra System hotkeys. Ctrl + W is bound to an action by default, make sure you unbind that!
+If Citra is acting strangely, check the default Citra System hotkeys. Ctrl + W is bound to an action by default, make sure you unbind that!
 
 Lastly, if a part of the script you believe is inaccurate, make sure there is as little "dead" black space in the Citra touch screen window as you can get!
 
