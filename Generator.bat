@@ -81,22 +81,22 @@ if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if APressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(20) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(100) >> .\Lib\JoyX.ahk
@@ -127,16 +127,16 @@ if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	SuperAPressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(80) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(40) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(15) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(0) >> .\Lib\JoyX.ahk
@@ -163,23 +163,23 @@ if %Version%==KeyboardMouse echo: 	if %Sprint%Pressed ^= 0 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if DPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(80) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(40) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(40) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(15) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	AMax ^:= 1 >> .\Lib\JoyX.ahk
@@ -211,16 +211,16 @@ if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	SuperDPressed ^:= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(20) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyX.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(100) >> .\Lib\JoyX.ahk
@@ -300,23 +300,23 @@ if %Version%==KeyboardMouse echo: 	if %Sprint%Pressed ^= 0 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(80) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(40) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(40) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(15) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(0) >> .\Lib\JoyY.ahk
@@ -346,15 +346,15 @@ if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	SuperSPressed ^:= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(20) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(60) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(100) >> .\Lib\JoyY.ahk
@@ -381,22 +381,22 @@ if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if WPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(20) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(60) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(60) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(100) >> .\Lib\JoyY.ahk
@@ -427,16 +427,16 @@ if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	SuperWPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(80) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(40) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(15) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 80 >> .\Lib\JoyY.ahk
+if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
 if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(0) >> .\Lib\JoyY.ahk
