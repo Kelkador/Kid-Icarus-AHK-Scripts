@@ -1,4 +1,4 @@
-@echo off
+@ECHO OFF
 CHOICE /C KC /M "What input will you use? (K for Keyboard/Mouse C for Controller)"
 if %errorlevel%==1 goto KeyboardMouse
 if %errorlevel%==2 goto Controller
@@ -6,7 +6,7 @@ if %errorlevel%==2 goto Controller
 
 :KeyboardMouse
 set "Version=KeyboardMouse"
-@echo What key will you press to SPRINT? (Recommended: Space or LControl) (Type out key name if not a character key!!)
+@echo What key will you press to SPRINT? (Recommended: Space or LControl) (Type out key name if not an alphanumeric key!!)
 set /p "Sprint= "
 @echo What key will you press to activate vehicle abilities? (Exotank, etc.)
 set /p "Vroom= "
@@ -14,7 +14,7 @@ goto funnel
 
 :Controller
 set "Version=Controller"
-@echo What key will you press to activate vehicle abilities? (Exotank, etc.) (Type out key name if not a character key and map this key to the controller in Steam!!)
+@echo What key will you press to activate vehicle abilities? (Exotank, etc.) (Type out key name if not an alphanumeric key AND map chosen key to the controller in Steam!!)
 set /p "Vroom= "
 goto funnel
 
@@ -26,654 +26,695 @@ set /p "Pause= "
 @echo What key will END the script?
 set /p "End= "
 Del %Version%.ahk
+if %Version%==KeyboardMouse Del .\Lib\Barrier.ahk
 
-if %Version%==KeyboardMouse Del .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse Del .\Lib\JoyY.ahk
+if %Version%==Controller echo:  Persistent >> Controller.ahk
+if %Version%==Controller echo:  KeyHistory(0) >> Controller.ahk
+if %Version%==Controller echo:  #SingleInstance force >> Controller.ahk
+if %Version%==Controller echo:  InstallKeybdHook() >> Controller.ahk
+if %Version%==Controller echo:  InstallMouseHook() >> Controller.ahk
+if %Version%==Controller echo:  KeyHistory(0) >> Controller.ahk
+if %Version%==Controller echo:  A_MaxHotkeysPerInterval ^:= 255 >> Controller.ahk
+if %Version%==Controller echo:  ListLines(false) >> Controller.ahk
+if %Version%==Controller echo:  SendMode("Input") >> Controller.ahk
+if %Version%==Controller echo:  ProcessSetPriority("A") >> Controller.ahk
+if %Version%==Controller echo:  SetKeyDelay(-1, -1) >> Controller.ahk
+if %Version%==Controller echo:  CoordMode("Mouse", "Client") >> Controller.ahk
+if %Version%==Controller echo:  #MaxThreads 255 >> Controller.ahk
+if %Version%==Controller echo:  SetTimer WatchCursor, 25 >> Controller.ahk
+if %Version%==Controller echo:  global toggle >> Controller.ahk
+if %Version%==Controller echo:  toggle ^:= 0 >> Controller.ahk
+if %Version%==Controller echo:  return >> Controller.ahk
+if %Version%==Controller echo:   >> Controller.ahk
+if %Version%==Controller echo:   *%Vroom%^:: >> Controller.ahk
+if %Version%==Controller echo:  { >> Controller.ahk
+if %Version%==Controller echo:  global >> Controller.ahk
+if %Version%==Controller echo:  if toggle ^= 1 >> Controller.ahk
+if %Version%==Controller echo:  { >> Controller.ahk
+if %Version%==Controller echo:  toggle ^:= 0 >> Controller.ahk
+if %Version%==Controller echo:  BlockInput MouseMove >> Controller.ahk
+if %Version%==Controller echo:  sleep 70 >> Controller.ahk
+if %Version%==Controller echo:  Send ("{LButton}") >> Controller.ahk
+if %Version%==Controller echo:  sleep 70 >> Controller.ahk
+if %Version%==Controller echo:  MouseMove VroomX, VroomY, 0 >> Controller.ahk
+if %Version%==Controller echo:  sleep 70 >> Controller.ahk
+if %Version%==Controller echo:  Send ("{LButton Down}") >> Controller.ahk
+if %Version%==Controller echo:  sleep 70 >> Controller.ahk
+if %Version%==Controller echo:  Send ("{LButton Up}") >> Controller.ahk
+if %Version%==Controller echo:  sleep 70 >> Controller.ahk
+if %Version%==Controller echo:  MouseMove XCen, YCen, 0 >> Controller.ahk
+if %Version%==Controller echo:  toggle ^:= 1 >> Controller.ahk
+if %Version%==Controller echo:  BlockInput false >> Controller.ahk
+if %Version%==Controller echo:  } >> Controller.ahk
+if %Version%==Controller echo:  } >> Controller.ahk
+if %Version%==Controller echo:   >> Controller.ahk
+if %Version%==Controller echo:  ~*%Start%^:: ;Begins Script  >> Controller.ahk
+if %Version%==Controller echo: {  >> Controller.ahk
+if %Version%==Controller echo: global >> Controller.ahk
+if %Version%==Controller echo:  CoordMode("Mouse", "Client") >> Controller.ahk
+if %Version%==Controller echo:  WinGetPos(^&LeftB1, ^&TopB1, ^&RightB1, ^&BottomB1, "A") >> Controller.ahk
+if %Version%==Controller echo:  LeftB2 ^:= (RightB1 * 0.1)  >> Controller.ahk
+if %Version%==Controller echo:  TopB2 ^:= (BottomB1 * 0.1)  >> Controller.ahk
+if %Version%==Controller echo:  RightB2 ^:= (RightB1 * 0.9)  >> Controller.ahk
+if %Version%==Controller echo:  BottomB2 ^:= (BottomB1 * 0.9)  >> Controller.ahk
+if %Version%==Controller echo:  VroomX ^:= (RightB1 * 0.08)  >> Controller.ahk
+if %Version%==Controller echo:  VroomY ^:= (BottomB1 * 0.92)  >> Controller.ahk
+if %Version%==Controller echo:  xCen ^:= (RightB1 / 2) ; This will be where your mouse snaps back to horizontally   >> Controller.ahk
+if %Version%==Controller echo:  yCen ^:= (BottomB1 / 2) ; This will be where your mouse snaps back to vertically  >> Controller.ahk
+if %Version%==Controller echo:  toggle ^:= 1 >> Controller.ahk
+if %Version%==Controller echo:  ClipCursor(true, LeftB1 ^+ 10, TopB1 ^+ 60, LeftB1 ^+ RightB1 ^- 10, TopB1 ^+ BottomB1 ^- 10) >> Controller.ahk
+if %Version%==Controller echo:  SetTimer Activate, 50 >> Controller.ahk
+if %Version%==Controller echo:  } >> Controller.ahk
+if %Version%==Controller echo:   >> Controller.ahk
+if %Version%==Controller echo:    ~*%Pause%^:: ; Restarts Script    >> Controller.ahk
+if %Version%==Controller echo:  { >> Controller.ahk
+if %Version%==Controller echo:  global >> Controller.ahk
+if %Version%==Controller echo:  CoordMode("Mouse", "Client")  >> Controller.ahk
+if %Version%==Controller echo:  toggle ^:= 0 >> Controller.ahk
+if %Version%==Controller echo:  sleep 100 >> Controller.ahk
+if %Version%==Controller echo:  Send("{LButton}") >> Controller.ahk
+if %Version%==Controller echo:  ClipCursor(False, 0, 0, 0, 0) >> Controller.ahk
+if %Version%==Controller echo:  return  >> Controller.ahk
+if %Version%==Controller echo:  }   >> Controller.ahk
+if %Version%==Controller echo:   >> Controller.ahk
+if %Version%==Controller echo:  WatchCursor()  >> Controller.ahk
+if %Version%==Controller echo: { ; V1toV2: Added bracket >> Controller.ahk
+if %Version%==Controller echo:  global XCur >> Controller.ahk
+if %Version%==Controller echo:  global YCur >> Controller.ahk
+if %Version%==Controller echo:  CoordMode "Mouse", "Client" >> Controller.ahk
+if %Version%==Controller echo:  MouseGetPos ^&XCur, ^&YCur ; Tracks mouse at all times  >> Controller.ahk
+if %Version%==Controller echo:  return  >> Controller.ahk
+if %Version%==Controller echo: } ; V1toV2: Added bracket in the end >> Controller.ahk
+if %Version%==Controller echo:   >> Controller.ahk
+if %Version%==Controller echo:  Activate() >> Controller.ahk
+if %Version%==Controller echo:  { >> Controller.ahk
+if %Version%==Controller echo:  While toggle ^= 1 >> Controller.ahk
+if %Version%==Controller echo:  {  >> Controller.ahk
+if %Version%==Controller echo:  	if (XCur ^> RightB2) ; Right boundary    >> Controller.ahk
+if %Version%==Controller echo:  	{   >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton}") ;Cancels the click to stop in game snapping   >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput MouseMove  >> Controller.ahk
+if %Version%==Controller echo:  		MouseMove XCen, YCen, 0 ; Moves mouse back to initial position  >> Controller.ahk
+if %Version%==Controller echo:  		Sleep (50) ; Freezes inputs for a frame or two, this stops in game snapping. Comment out if you want less dead time in exchange for snapping movements   >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput false >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton Down}") ; Restarts click   >> Controller.ahk
+if %Version%==Controller echo:  	}   >> Controller.ahk
+if %Version%==Controller echo:  		if (XCur ^< LeftB2) ; Left boundary    >> Controller.ahk
+if %Version%==Controller echo:  	{   >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton}")  >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput MouseMove  >> Controller.ahk
+if %Version%==Controller echo:  		MouseMove XCen, YCen, 0  >> Controller.ahk
+if %Version%==Controller echo:  		Sleep (50)  >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput false  >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton Down}") >> Controller.ahk
+if %Version%==Controller echo:  	}   >> Controller.ahk
+if %Version%==Controller echo:  		if (YCur ^> BottomB2) ; Bottom boundary    >> Controller.ahk
+if %Version%==Controller echo:  	{   >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton}")  >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput MouseMove  >> Controller.ahk
+if %Version%==Controller echo:  		MouseMove XCen, YCen, 0  >> Controller.ahk
+if %Version%==Controller echo:  		Sleep (50)  >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput false  >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton Down}")  >> Controller.ahk
+if %Version%==Controller echo:  	}   >> Controller.ahk
+if %Version%==Controller echo:  		if (YCur ^< TopB2) ; Top boundary   >> Controller.ahk
+if %Version%==Controller echo:  	{   >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton}")  >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput MouseMove  >> Controller.ahk
+if %Version%==Controller echo:  		MouseMove XCen, YCen, 0  >> Controller.ahk
+if %Version%==Controller echo:  		Sleep (50)  >> Controller.ahk
+if %Version%==Controller echo:  		BlockInput false >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton Down}") >> Controller.ahk
+if %Version%==Controller echo:  	}    >> Controller.ahk
+if %Version%==Controller echo:  		Send ("{LButton Down}") ; Ensures touch screen is always tapped >> Controller.ahk
+if %Version%==Controller echo:  	}  >> Controller.ahk
+if %Version%==Controller echo: 	 if toggle ^= 0  >> Controller.ahk
+if %Version%==Controller echo: 	 return >> Controller.ahk
+if %Version%==Controller echo: } >> Controller.ahk
+if %Version%==Controller echo: >> Controller.ahk
+if %Version%==Controller echo: >> Controller.ahk
+if %Version%==Controller echo: ClipCursor(confine, x1, y1, x2, y2) { >> Controller.ahk
+if %Version%==Controller echo: >> Controller.ahk
+if %Version%==Controller echo:	hData ^:= DllCall("GlobalAlloc", "uint",0x2, "ptr",16) >> Controller.ahk
+if %Version%==Controller echo:	pData ^:= DllCall("GlobalLock", "ptr",hData) >> Controller.ahk
+if %Version%==Controller echo:	NumPut("UPtr",x1,pData+0) >> Controller.ahk
+if %Version%==Controller echo:	NumPut("UPtr",y1,pData+4) >> Controller.ahk
+if %Version%==Controller echo:	NumPut("UPtr",x2,pData+8) >> Controller.ahk
+if %Version%==Controller echo:	NumPut("UPtr",y2,pData+12) >> Controller.ahk
+if %Version%==Controller echo: >> Controller.ahk
+if %Version%==Controller echo:	value ^:=  Confine ^? DllCall( "ClipCursor", "Ptr",pData ) : DllCall( "ClipCursor" ) >> Controller.ahk
+if %Version%==Controller echo:	DllCall("GlobalUnlock", "ptr",hData) >> Controller.ahk
+if %Version%==Controller echo:	DllCall("GlobalFree", "ptr",hData) >> Controller.ahk
+if %Version%==Controller echo: >> Controller.ahk
+if %Version%==Controller echo: return >> Controller.ahk
+if %Version%==Controller echo: } >> Controller.ahk
+if %Version%==Controller echo: >> Controller.ahk
+if %Version%==Controller echo: ~*%End%^::  >> Controller.ahk
+if %Version%==Controller echo: { >> Controller.ahk
+if %Version%==Controller echo: global >> Controller.ahk
+if %Version%==Controller echo: ClipCursor(False, 0, 0, 0, 0) >> Controller.ahk
+if %Version%==Controller echo: ExitApp() >> Controller.ahk
+if %Version%==Controller echo: } >> Controller.ahk
 
-if %Version%==KeyboardMouse echo: #Persistent > .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #NoEnv >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #KeyHistory 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #SingleInstance force >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #InstallKeybdHook >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #InstallMouseHook >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #KeyHistory 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #MaxHotkeysPerInterval 250 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: ListLines Off >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: SendMode Input >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: SendMode Input >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: Process, Priority, , A >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #include AHK-ViGEm-Bus.ahk >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: SetBatchLines, -1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: SetKeyDelay, -1, -1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #MaxThreads 100 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #NoTrayIcon >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: SetTimer, JoyFix, 100 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: controller ^:= ComObjActive("{69420101-D9E5-4043-9A69-816ED91837A3}") >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: APressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: DPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: %Sprint%Pressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: SuperAPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: SuperDPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: AMax ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: DMax ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: ~*%Sprint%:: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	%Sprint%Pressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: ~*%Sprint% up:: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	%Sprint%Pressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: ~*D:: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: if DPressed ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: { >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	DPressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperDPressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperAPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	AMax ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if %Sprint%Pressed ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if APressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(20) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(100) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	DMax ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(100) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	DMax ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: ~*D up:: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	DPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperDPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	DMax ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if APressed ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(50) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if AMax ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperAPressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(40) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(15) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(0) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	AMax ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo:	 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: ~*A:: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: if APressed ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: { >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	APressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperAPressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperDPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	DMax ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if %Sprint%Pressed ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if DPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(40) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(40) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(15) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperAPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	AMax ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(0) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(0) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	AMax ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: ~*A up:: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	APressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperAPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	AMax ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if DPressed ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(50) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if DMax ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	SuperDPressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(20) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(60) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(85) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	if SuperDPressed ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LX.SetState(100) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	DMax ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: JoyFix: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: if GetKeyState("A", "P") ^= 0 and GetKeyState("D", "P") ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: try controller.Axes.LX.SetState(50) >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: if GetKeyState("A", "P") ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: APressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: else if GetKeyState("A", "P") ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: APressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: if GetKeyState("D", "P") ^= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: DPressed ^:= 1 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: else if GetKeyState("D", "P") ^= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: DPressed ^:= 0 >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: return >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyX.ahk
-if %Version%==KeyboardMouse echo: #Persistent > .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #NoEnv >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #KeyHistory 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #SingleInstance force >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #InstallKeybdHook >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #InstallMouseHook >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #KeyHistory 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #MaxHotkeysPerInterval 250 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: ListLines Off >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SendMode Input >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SendMode Input >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: Process, Priority, , A >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #include AHK-ViGEm-Bus.ahk >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SetBatchLines, -1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SetKeyDelay, -1, -1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #MaxThreads 100 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: #NoTrayIcon >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SetTimer, JoyFix, 100 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: controller ^:= ComObjActive("{69420101-D9E5-4043-9A69-816ED91837A3}") >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: WPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: %Sprint%Pressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SuperWPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SuperSPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: WMax ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SMax ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: ~*%Sprint%:: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	%Sprint%Pressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: ~*%Sprint% up:: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	%Sprint%Pressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: ~*W:: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: if WPressed ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: { >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	WPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperWPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperSPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SMax ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if %Sprint%Pressed ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(40) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(40) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(15) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(0) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	WMax ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(0) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	WMax ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: ~*W up:: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	WPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperWPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SPressed ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(50) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SMax ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperSPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(20) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(60) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(100) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SMax ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: ~*S:: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: if SPressed ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: { >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperSPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperWPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	WMax ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if %Sprint%Pressed ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if WPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(20) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(60) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(60) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperSPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(100) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SMax ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else  >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(100) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SMax ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: ~*S up:: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperSPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SMax ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if WPressed ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(50) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if WMax ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	SuperWPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(85) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(40) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 30 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(15) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	sleep 55 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	if SuperWPressed ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	{ >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	controller.Axes.LY.SetState(0) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	WMax ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	else return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	} >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: 	return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: JoyFix: >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: { >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: if GetKeyState("W", "P") ^= 0 and GetKeyState("S", "P") ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: try controller.Axes.LY.SetState(50) >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: if GetKeyState("W", "P") ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: WPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: else if GetKeyState("W", "P") ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: WPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: if GetKeyState("S", "P") ^= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SPressed ^:= 1 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: else if GetKeyState("S", "P") ^= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: SPressed ^:= 0 >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: return >> .\Lib\JoyY.ahk
-if %Version%==KeyboardMouse echo: } >> .\Lib\JoyY.ahk
-echo: #Persistent  > %Version%.ahk
-echo: #NoEnv  >> %Version%.ahk
-echo: #KeyHistory 0  >> %Version%.ahk
-echo: #SingleInstance force  >> %Version%.ahk
-echo: #InstallKeybdHook  >> %Version%.ahk
-echo: #InstallMouseHook  >> %Version%.ahk
-echo: #KeyHistory 0  >> %Version%.ahk
-echo: #MaxHotkeysPerInterval 250  >> %Version%.ahk
-echo: ListLines Off  >> %Version%.ahk
-echo: SendMode Input  >> %Version%.ahk
-if %Version%==KeyboardMouse echo: #include Lib\AHK-ViGEm-Bus.ahk >> %Version%.ahk
-echo: SetWorkingDir, Lib  >> %Version%.ahk
-echo: Process, Priority, , A  >> %Version%.ahk
-echo: SetBatchLines, -1  >> %Version%.ahk
-echo: SetKeyDelay, -1, -1  >> %Version%.ahk
-echo: #MaxThreads 150 >> %Version%.ahk
-echo: SetTimer, WatchCursor, 5 >> %Version%.ahk
-echo: global XCur >> %Version%.ahk
-echo: global YCur >> %Version%.ahk
-echo: global TopB2 >> %Version%.ahk
-echo: global BottomB2 >> %Version%.ahk
-echo: global LeftB2 >> %Version%.ahk
-echo: global RightB2 >> %Version%.ahk
-echo: global XCen >> %Version%.ahk
-echo: global YCen >> %Version%.ahk
-echo: global XVroom >> %Version%.ahk
-echo: global YVroom >> %Version%.ahk
-echo: global toggle >> %Version%.ahk
-echo: global Vehicle >> %Version%.ahk
-echo: global confine >> %Version%.ahk
-echo: toggle ^:= 0 >> %Version%.ahk
-echo: Vehicle ^:= 0 >> %Version%.ahk
-echo: confine ^:= False >> %Version%.ahk
-echo:  >> %Version%.ahk
-if %Version%==KeyboardMouse echo: controller ^:= new ViGEmDS4() >> %Version%.ahk
-if %Version%==KeyboardMouse echo: ObjRegisterActive(controller, "{69420101-D9E5-4043-9A69-816ED91837A3}") >> %Version%.ahk
-if %Version%==KeyboardMouse echo: run JoyX.ahk >> %Version%.ahk
-if %Version%==KeyboardMouse echo: run JoyY.ahk >> %Version%.ahk
-echo:  >> %Version%.ahk
-echo: OnExit("Closing")  >> %Version%.ahk
-echo:   >> %Version%.ahk
-echo: ~*%Start%:: ;Begins Script >> %Version%.ahk
-echo: if toggle ^= 0 >> %Version%.ahk
-echo: { >> %Version%.ahk
-echo: CoordMode, Mouse, Client >> %Version%.ahk
-echo: WinGetPos, LeftB1, TopB1, RightB1, BottomB1, A >> %Version%.ahk
-echo: LeftB2 ^:= (RightB1 * 0.1) >> %Version%.ahk
-echo: TopB2 ^:= (BottomB1 * 0.1) >> %Version%.ahk
-echo: RightB2 ^:= (RightB1 * 0.9) >> %Version%.ahk
-echo: BottomB2 ^:= (BottomB1 * 0.9) >> %Version%.ahk
-echo: TopB3 ^:= (TopB1 * 1.15) >> %Version%.ahk
-echo: LeftB3 ^:= (LeftB1 * 1.02) >> %Version%.ahk
-echo: ClipX ^:= ((LeftB1 + RightB1) * .99) >> %Version%.ahk
-echo: ClipY ^:= ((TopB1 + BottomB1) * .98) >> %Version%.ahk
-echo: VroomX ^:= (RightB1 * 0.08) >> %Version%.ahk
-echo: VroomY ^:= (BottomB1 * 0.92) >> %Version%.ahk
-echo: xCen ^:= (RightB1 / 2) ; This will be where your mouse snaps back to horizontally  >> %Version%.ahk
-echo: yCen ^:= (BottomB1 / 2) ; This will be where your mouse snaps back to vertically >> %Version%.ahk
-echo: toggle ^:= 1 >> %Version%.ahk
-echo: ClipCursor(True, LeftB3, TopB3, ClipX, ClipY) >> %Version%.ahk
-echo: Activate() >> %Version%.ahk
-echo: return >> %Version%.ahk
-echo: } >> %Version%.ahk
-echo:  >> %Version%.ahk
-echo:  >> %Version%.ahk
-echo:  >> %Version%.ahk
-echo:  ~*%Pause%:: ; Restarts Script   >> %Version%.ahk
-echo: {  >> %Version%.ahk
-echo: CoordMode, Mouse, Client >> %Version%.ahk
-if %Version%==KeyboardMouse echo: ObjRegisterActive(controller, "") >> %Version%.ahk
-echo: Reload  >> %Version%.ahk
-echo: Send {LButton}  >> %Version%.ahk
-echo: return   >> %Version%.ahk
-echo: }  >> %Version%.ahk
-echo:   >> %Version%.ahk
-echo: ~*%End%::  >> %Version%.ahk
-echo: ExitApp >> %Version%.ahk
-echo:  >> %Version%.ahk
-if %Version%==KeyboardMouse echo: ~*LButton:: >> %Version%.ahk
-if %Version%==KeyboardMouse echo: 	controller.Buttons.L1.SetState(true) >> %Version%.ahk
-if %Version%==KeyboardMouse echo: 	return >> %Version%.ahk
-if %Version%==KeyboardMouse echo: >> %Version%.ahk
-if %Version%==KeyboardMouse echo: >> %Version%.ahk
-if %Version%==KeyboardMouse echo: ~*LButton Up:: >> %Version%.ahk
-if %Version%==KeyboardMouse echo: 	controller.Buttons.L1.SetState(false) >> %Version%.ahk
-if %Version%==KeyboardMouse echo: 	return >> %Version%.ahk
-if %Version%==KeyboardMouse echo: >> %Version%.ahk
-echo: ~*^$%Vroom%:: >> %Version%.ahk
-echo: if (Vehicle ^= 0) and (toggle ^= 1) >> %Version%.ahk
-echo: { >> %Version%.ahk
-echo: BlockInput, MouseMove >> %Version%.ahk
-echo: Vehicle ^:= 1 >> %Version%.ahk
-echo: toggle ^:= 0 >> %Version%.ahk
-echo: sleep 100 >> %Version%.ahk
-echo: Send {LButton Up} >> %Version%.ahk
-echo: sleep 100 >> %Version%.ahk
-echo: MouseMove, VroomX, VroomY, 0 >> %Version%.ahk
-echo: Send {LButton Down} >> %Version%.ahk
-echo: sleep 70 >> %Version%.ahk
-echo: Send {LButton Up} >> %Version%.ahk
-echo: sleep 70 >> %Version%.ahk
-echo: MouseMove, xCen, yCen, 0 >> %Version%.ahk
-echo: Vehicle ^:= 0 >> %Version%.ahk
-echo: toggle ^:= 1 >> %Version%.ahk
-echo: BlockInput, MouseMoveOff >> %Version%.ahk
-echo: return >> %Version%.ahk
-echo: } >> %Version%.ahk
-echo:   >> %Version%.ahk
-echo: ClipCursor(confine, x1, y1, x2, y2) {  >> %Version%.ahk
-echo:  ; ^https://autohotkey.com/board/topic/61753-confining-mouse-to-a-window/  >> %Version%.ahk
-echo:  If ^!confine  >> %Version%.ahk
-echo:   Return DllCall("ClipCursor")  >> %Version%.ahk
-echo:  VarSetCapacity(R, 16, 0), NumPut(x1, ^&R, 0, "UInt"), NumPut(y1, ^&R, 4, "UInt")  >> %Version%.ahk
-echo:  NumPut(x2, ^&R, 8, "UInt"), NumPut(y2, ^&R, 12, "UInt")  >> %Version%.ahk
-echo:  Return DllCall("ClipCursor", UInt, ^&R)  >> %Version%.ahk
-echo: }  >> %Version%.ahk
-echo:   >> %Version%.ahk
-if %Version%==KeyboardMouse echo: ObjRegisterActive(Object, CLSID, ^Flags:=0) { >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     static cookieJar ^:= {} >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     if (!CLSID) { >> %Version%.ahk
-if %Version%==KeyboardMouse echo:         if (cookie ^:= cookieJar.Remove(Object)) ^!= "" >> %Version%.ahk
-if %Version%==KeyboardMouse echo:             DllCall("oleaut32\RevokeActiveObject", "uint", cookie, "ptr", 0) >> %Version%.ahk
-if %Version%==KeyboardMouse echo:         return >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     } >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     if cookieJar[Object] >> %Version%.ahk
-if %Version%==KeyboardMouse echo:         throw Exception("Object is already registered", -1) >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     VarSetCapacity(_clsid, 16, 0) >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     if ^(hr ^:= DllCall("ole32\CLSIDFromString", "wstr", CLSID, "ptr", ^&_clsid)) ^< 0 >> %Version%.ahk
-if %Version%==KeyboardMouse echo:         throw Exception("Invalid CLSID", -1, CLSID) >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     hr ^:= DllCall("oleaut32\RegisterActiveObject" >> %Version%.ahk
-if %Version%==KeyboardMouse echo:         , "ptr", ^&Object, "ptr", ^&_clsid, "uint", Flags, "uint*", cookie >> %Version%.ahk
-if %Version%==KeyboardMouse echo:         , "uint") >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     if hr ^< 0 >> %Version%.ahk
-if %Version%==KeyboardMouse echo:         throw Exception(format("Error 0x{:x}", hr), -1) >> %Version%.ahk
-if %Version%==KeyboardMouse echo:     cookieJar[Object] ^:= cookie >> %Version%.ahk
-if %Version%==KeyboardMouse echo: } >> %Version%.ahk
-echo:   >> %Version%.ahk
-echo: WatchCursor: >> %Version%.ahk
-echo: CoordMode, Mouse, Client >> %Version%.ahk
-echo: MouseGetPos, XCur, YCur ; Tracks mouse at all times >> %Version%.ahk
-echo: return >> %Version%.ahk
-echo:   >> %Version%.ahk
-echo: Closing()  >> %Version%.ahk
-echo: {  >> %Version%.ahk
-echo: DetectHiddenWindows, On  >> %Version%.ahk
-echo: SetTitleMatchMode, 2  >> %Version%.ahk
-echo: DetectHiddenWindows, On  >> %Version%.ahk
-echo: WinGet, AHKList, List, ahk_exe Autohotkey.exe  >> %Version%.ahk
-echo: Loop, ^%%AHKList%%  >> %Version%.ahk
-echo: 	IF (A_ScriptHwnd ^<^> ID ^:= AHKList^%%A_Index%%)  >> %Version%.ahk
-echo: 		WinClose, ahk_id %ID%  >> %Version%.ahk
-echo: ClipCursor(False, 0, 0, 0, 0)  >> %Version%.ahk
-if %Version%==KeyboardMouse echo: WinClose, JoyX.ahk >> %Version%.ahk
-if %Version%==KeyboardMouse echo: WinClose, JoyY.ahk >> %Version%.ahk
-echo: 	Send {LButton}  >> %Version%.ahk
-echo: WinGet, AHKList, List, ahk_exe AutohotkeyU64.exe  >> %Version%.ahk
-echo: Loop, ^%%AHKList%%  >> %Version%.ahk
-echo: 	IF (A_ScriptHwnd ^<^> ID ^:= AHKList^%%A_Index%%)  >> %Version%.ahk
-echo: 		WinClose, ahk_id %ID%  >> %Version%.ahk
-echo: }  >> %Version%.ahk
-echo:  >> %Version%.ahk
-echo: Activate() >> %Version%.ahk
-echo: { >> %Version%.ahk
-echo: click: >> %Version%.ahk
-echo: While toggle ^:= 1 >> %Version%.ahk
-echo: { >> %Version%.ahk
-echo: 	if (XCur ^> RightB2) ; Right boundary   >> %Version%.ahk
-echo: 	{  >> %Version%.ahk
-echo: 		Send {LButton} ;Cancels the click to stop in game snapping  >> %Version%.ahk
-echo: 		BlockInput, MouseMove >> %Version%.ahk
-echo: 		MouseMove XCen, YCen, 0 ; Moves mouse back to initial position >> %Version%.ahk
-echo: 		Sleep (60) ; Freezes inputs for a frame or two, this stops in game snapping. Comment out if you want less dead time in exchange for snapping movements  >> %Version%.ahk
-echo: 		BlockInput, MouseMoveOff >> %Version%.ahk
-echo: 		Send {LButton Down} ; Restarts click  >> %Version%.ahk
-echo: 	}  >> %Version%.ahk
-echo: 		if (XCur ^< LeftB2) ; Left boundary   >> %Version%.ahk
-echo: 	{  >> %Version%.ahk
-echo: 		Send {LButton} >> %Version%.ahk
-echo: 		BlockInput, MouseMove >> %Version%.ahk
-echo: 		MouseMove XCen, YCen, 0 >> %Version%.ahk
-echo: 		Sleep (60) >> %Version%.ahk
-echo: 		BlockInput, MouseMoveOff >> %Version%.ahk
-echo: 		Send {LButton Down} >> %Version%.ahk
-echo: 	}  >> %Version%.ahk
-echo: 		if (YCur ^> BottomB2) ; Bottom boundary   >> %Version%.ahk
-echo: 	{  >> %Version%.ahk
-echo: 		Send {LButton} >> %Version%.ahk
-echo: 		BlockInput, MouseMove >> %Version%.ahk
-echo: 		MouseMove XCen, YCen, 0 >> %Version%.ahk
-echo: 		Sleep (60) >> %Version%.ahk
-echo: 		BlockInput, MouseMoveOff >> %Version%.ahk
-echo: 		Send {LButton Down} >> %Version%.ahk
-echo: 	}  >> %Version%.ahk
-echo: 		if (YCur ^< TopB2) ; Top boundary  >> %Version%.ahk
-echo: 	{  >> %Version%.ahk
-echo: 		Send {LButton} >> %Version%.ahk
-echo: 		BlockInput, MouseMove >> %Version%.ahk
-echo: 		MouseMove XCen, YCen, 0 >> %Version%.ahk
-echo: 		Sleep (60) >> %Version%.ahk
-echo: 		BlockInput, MouseMoveOff >> %Version%.ahk
-echo: 		Send {LButton Down} >> %Version%.ahk
-echo: 	}  >> %Version%.ahk
-echo: 		if GetKeyState("LButton", "P") ^= 0 >> %Version%.ahk
-echo: 	{  >> %Version%.ahk
-echo: 		Send {LButton Down} ; Ensures touch screen is always tapped  >> %Version%.ahk
-echo: 	} >> %Version%.ahk
-echo: } >> %Version%.ahk
-echo: if toggle ^= 0 >> %Version%.ahk
-echo: sleep 500 >> %Version%.ahk
-echo: if toggle ^= 1 >> %Version%.ahk
-echo: goto click >> %Version%.ahk
-echo: } >> %Version%.ahk
+if %Version%==KeyboardMouse echo:  KeyHistory(0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Persistent >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  #SingleInstance force >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  InstallKeybdHook() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  InstallMouseHook() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  KeyHistory(0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  A_MaxHotkeysPerInterval ^:= 255 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ListLines(false) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  SendMode("Input") >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ProcessSetPriority("A") >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  SetKeyDelay(-1, -1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  #MaxThreads 255 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  #Include Lib/AHK-ViGEm-Bus.ahk >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global controller >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  controller ^:= ViGEmDS4() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global Vehicle >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Vehicle ^:= 0  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global confine >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  confine ^:= False >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global Yvalue >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Yvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global Yincrement >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Yincrement ^:= 7 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global Ydecrease >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Ydecrease ^:= -7 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global Xvalue >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Xvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global Xincrement >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Xincrement ^:= 7 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global Xdecrease >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  Xdecrease ^:= -7 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global %Sprint%Pressed >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  %Sprint%Pressed ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  StickFreeze ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  SetTimer XJoyValue, 30 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  SetTimer YJoyValue, 30 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  barrier ^:= ThreadObj("#Include .\Lib\Barrier.ahk") >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global toggle2 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  toggle2 ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ~*%End%^::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: ClipCursor1(False, 0, 0, 0, 0)  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ExitApp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   ~*%Sprint%^::   >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  {  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  	global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if %Sprint%Pressed ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   	%Sprint%Pressed ^:= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("W", "P") ^&^& GetKeyState("S", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Yvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	YDirection ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	sleep 70 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("W", "P") ^&^& GetKeyState("S", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Yvalue ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	YDirection ^:= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("W", "P") ^= 0 ^&^& GetKeyState("S", "P") >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Yvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	YDirection ^:= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	sleep 70 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("W", "P") ^= 0 ^&^& GetKeyState("S", "P") >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Yvalue ^:= 100 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	YDirection ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("A", "P") ^&^& GetKeyState("D", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Xvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	XDirection ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	sleep 70 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("A", "P") ^&^& GetKeyState("D", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Xvalue ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	XDirection ^:= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("A", "P") ^= 0 ^&^& GetKeyState("D", "P") >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Xvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	XDirection ^:= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	sleep 70 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	if GetKeyState("A", "P") ^= 0 ^&^& GetKeyState("D", "P") >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	{ >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	Xvalue ^:= 100 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	XDirection ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ~*%Sprint% Up::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  {  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  	global  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    %Sprint%Pressed ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	StickFreeze ^:= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	sleep 90 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	StickFreeze ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  }  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ~*LButton::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  	controller.Buttons.Square.SetState(true)  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ~*LButton Up::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  	controller.Buttons.Square.SetState(false)  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: ~*W:: >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YDirection ^:= "1" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else if (Yvalue ^> 0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Loop >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("W", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Break >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("S", "P")  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (YDirection ^= 1  ^&^& Yvalue ^> 0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: ~*W up::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YDirection ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("S", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "100" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else YRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: ~*S:: >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YDirection ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "100" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (Yvalue ^< 100) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Loop >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("S", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Break >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("W", "P")  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (YDirection ^= 0  ^&^& Yvalue ^< 100) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: ~*S up:: >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: {  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YDirection ^:= "1" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("W", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: W ^& S:: >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ~*A:: >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XDirection ^:= "1" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else if (Xvalue ^> 0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Loop >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("A", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Break >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("D", "P")  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (XDirection ^= 1  ^&^& Xvalue ^> 0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: ~*A up::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XDirection ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("D", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "100" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ~*D::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XDirection ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "100" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else if (Xvalue ^< 100) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Loop >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("D", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Break >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("A", "P")  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (XDirection ^= 0  ^&^& Xvalue ^< 100) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  ~*D up::  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XDirection ^:= "1" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("A", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else if (%Sprint%Pressed ^= 1) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "0" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: else XRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: A ^& D:: >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= "50" >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: While GetKeyState("W", "P")  ^&^& YDirection ^= 1  ^&^& Yvalue ^> 0  ^&^& GetKeyState("S", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Yvalue ^+= Ydecrease >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:   >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: While GetKeyState("S", "P")  ^&^& YDirection ^= 0  ^&^& Yvalue ^< 100  ^&^& GetKeyState("W", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Yvalue ^+= Yincrement >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: YJoyValue() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (Yvalue ^> 100) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= 100 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (Yvalue ^< 0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if StickFreeze ^= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("W", "P") ^= 0 ^&^& GetKeyState("S", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Yvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: try controller.Axes.LY.SetValue(3, Yvalue) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XRamp() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: While GetKeyState("A", "P")  ^&^& XDirection ^= 1  ^&^& Xvalue ^> 0  ^&^& GetKeyState("D", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Xvalue ^+= Xdecrease >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XRamp2() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: While GetKeyState("D", "P")  ^&^& XDirection ^= 0  ^&^& Xvalue ^< 100  ^&^& GetKeyState("A", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Xvalue ^+= Xincrement >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:    Sleep(5) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: XJoyValue() >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: global >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (Xvalue ^> 100) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= 100 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if (Xvalue ^< 0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if StickFreeze ^= 1 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: if GetKeyState("A", "P") ^= 0 ^&^& GetKeyState("D", "P") ^= 0 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: Xvalue ^:= 50 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: try controller.Axes.LX.SetValue(2, Xvalue) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: } >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: ClipCursor1(confine, x1, y1, x2, y2) { >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	hData ^:= DllCall("GlobalAlloc", "uint",0x2, "ptr",16) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	pData ^:= DllCall("GlobalLock", "ptr",hData) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	NumPut("UPtr",x1,pData+0) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	NumPut("UPtr",y1,pData+4) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	NumPut("UPtr",x2,pData+8) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	NumPut("UPtr",y2,pData+12) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo:  >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	value ^:=  Confine ^? DllCall( "ClipCursor", "Ptr",pData ) : DllCall( "ClipCursor" ) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	DllCall("GlobalUnlock", "ptr",hData) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	DllCall("GlobalFree", "ptr",hData) >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	 >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	return >> KeyboardMouse.ahk
+if %Version%==KeyboardMouse echo: 	} >> KeyboardMouse.ahk
+
+if %Version%==KeyboardMouse echo: Persistent >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: KeyHistory(0) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: #SingleInstance force >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: InstallKeybdHook() >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: InstallMouseHook() >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: KeyHistory(0) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: A_MaxHotkeysPerInterval ^:= 255 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: ListLines(false) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: SendMode("Input") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: ProcessSetPriority("A") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: SetKeyDelay(-1, -1) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: CoordMode("Mouse", "Client") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: #MaxThreads 255 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: #NoTrayIcon >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: SetTimer WatchCursor, 25 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: global toggle >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: toggle ^:= 0 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: return >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  ~*%Vroom%^:: >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: { >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: global >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: if toggle ^= 1 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: { >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: toggle ^:= 0 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: BlockInput MouseMove >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: sleep 70 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: Send ("{LButton}") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: sleep 70 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: MouseMove VroomX, VroomY, 0 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: sleep 70 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: Send ("{LButton Down}") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: sleep 70 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: Send ("{LButton Up}") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: sleep 70 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: MouseMove XCen, YCen, 0 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: toggle ^:= 1 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: BlockInput false >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: } >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: } >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: ~*%Start%^:: ;Begins Script  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: {  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: global >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: CoordMode("Mouse", "Client") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: WinGetPos(^&LeftB1, ^&TopB1, ^&RightB1, ^&BottomB1, "A") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: LeftB2 ^:= (RightB1 * 0.1)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: TopB2 ^:= (BottomB1 * 0.1)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: RightB2 ^:= (RightB1 * 0.9)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: BottomB2 ^:= (BottomB1 * 0.9)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: TopB3 ^:= (TopB1 * 1.15)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: VroomX ^:= (RightB1 * 0.08)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: VroomY ^:= (BottomB1 * 0.92)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: xCen ^:= (RightB1 / 2) ; This will be where your mouse snaps back to horizontally   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: yCen ^:= (BottomB1 / 2) ; This will be where your mouse snaps back to vertically  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: toggle ^:= 1 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: ClipCursor(true, LeftB1 ^+ 10, TopB1 ^+ 60, LeftB1 ^+ RightB1 ^- 10, TopB1 ^+ BottomB1 ^- 10) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: SetTimer Activate, 50 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: } >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:   ~*%Pause%^:: ; Restarts Script    >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: { >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: global >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: CoordMode("Mouse", "Client")  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: toggle ^:= 0 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: sleep 100 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: Send("{LButton}") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: ClipCursor(False, 0, 0, 0, 0) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: return  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: }   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: WatchCursor()  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: { ; V1toV2: Added bracket >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: global XCur >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: global YCur >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: CoordMode "Mouse", "Client" >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: MouseGetPos ^&XCur, ^&YCur ; Tracks mouse at all times  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: return  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: } ; V1toV2: Added bracket in the end >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: Activate() >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: { >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: While toggle ^= 1 >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: {  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	if (XCur ^> RightB2) ; Right boundary    >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	{   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton}") ;Cancels the click to stop in game snapping   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput MouseMove  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		MouseMove XCen, YCen, 0 ; Moves mouse back to initial position  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Sleep (50) ; Freezes inputs for a frame or two, this stops in game snapping. Comment out if you want less dead time in exchange for snapping movements   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput false >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton Down}") ; Restarts click   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	}   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		if (XCur ^< LeftB2) ; Left boundary    >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	{   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton}")  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput MouseMove  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		MouseMove XCen, YCen, 0  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Sleep (50)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput false  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton Down}") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	}   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		if (YCur ^> BottomB2) ; Bottom boundary    >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	{   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton}")  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput MouseMove  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		MouseMove XCen, YCen, 0  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Sleep (50)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput false  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton Down}")  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	}   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		if (YCur ^< TopB2) ; Top boundary   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	{   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton}")  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput MouseMove  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		MouseMove XCen, YCen, 0  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Sleep (50)  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		BlockInput false >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton Down}") >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	}    >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 		Send ("{LButton Down}") ; Ensures touch screen is always tapped >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: 	}  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: if toggle ^= 0  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: return >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: } >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:   >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: ClipCursor(confine, x1, y1, x2, y2) { >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: hData ^:= DllCall("GlobalAlloc", "uint",0x2, "ptr",16) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: pData ^:= DllCall("GlobalLock", "ptr",hData) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: NumPut("UPtr",x1,pData+0) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: NumPut("UPtr",y1,pData+4) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: NumPut("UPtr",x2,pData+8) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: NumPut("UPtr",y2,pData+12) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: value ^:=  Confine ^? DllCall( "ClipCursor", "Ptr",pData ) : DllCall( "ClipCursor" ) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: DllCall("GlobalUnlock", "ptr",hData) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: DllCall("GlobalFree", "ptr",hData) >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo:  >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: return >> .\Lib\Barrier.ahk
+if %Version%==KeyboardMouse echo: } >> .\Lib\Barrier.ahk
