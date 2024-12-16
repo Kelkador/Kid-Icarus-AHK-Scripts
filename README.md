@@ -36,7 +36,7 @@ End script = Closes the script completely, will have to be reopened.
 
 ![ScreenShot](https://i.imgur.com/HjBv41Z.png)
 
-3. Remap most the controls as you wish to the keyboard. However, DO NOT REMAP THE L BUTTON OR CIRCLE PAD. Leave those as-is and make sure L is set to fire in-game.
+3. Remap most the controls as you wish to the keyboard. However, DO NOT REMAP THE Y BUTTON OR CIRCLE PAD. Leave those as-is and make sure Y is set to fire in-game.
 4. Make SURE layout is set to "Seperate Windows" under Emulation > Configure > Graphics
 
 ![ScreenShot](https://i.imgur.com/jCIUPZm.png)
